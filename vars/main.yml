@@ -1,1 +1,3 @@
 ---
+dest_repo: /etc/yum.repos.d/docker-ce.repo
+...
