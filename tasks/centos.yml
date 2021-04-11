@@ -10,6 +10,13 @@
     url: "https://download.docker.com/linux/centos/docker-ce.repo"
     dest: /etc/yum.repos.d/docker-ce.repo
 
+- name: Desabilitando GPG Key Check em {{ dest_repo }} - não valida/solicita KEY.
+  replace:
+    path: "{{dest_repo}}"
+    regexp: '^gpgcheck=1.*$'
+    replace: 'gpgcheck=0'
+  tags: key-uncheck 
+
 - name: Instalando o docker-ce no centos
   yum:
     name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
